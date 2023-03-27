@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
 
 class MainHeader extends StatelessWidget {
   const MainHeader({super.key});
@@ -75,26 +76,32 @@ class MainHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Container(
-          height: 46,
-          width: 46,
-          decoration: BoxDecoration(
+        badges.Badge(
+          badgeContent: Text("1",
+          style: TextStyle(
             color: Colors.white,
-            shape: BoxShape.circle,
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.6),
-                blurRadius: 8,
-              ),
-            ],
           ),
-          padding: const EdgeInsets.all(12),
-          child: Icon(Icons.shopping_cart_outlined,
-          color: Colors.grey,
+          ),
+          child: Container(
+            height: 46,
+            width: 46,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.6),
+                  blurRadius: 8,
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(12),
+            child: Icon(Icons.shopping_cart_outlined,
+            color: Colors.grey,
+            ),
           ),
         ),    
-         
-
+        const SizedBox(width: 5), 
       ],
       ),
     );
