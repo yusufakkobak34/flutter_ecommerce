@@ -22,7 +22,6 @@ class HomeController extends GetxController {
         bannerList.assignAll(adBannerListFromJson(result.body));
       }
     } finally {
-      print(bannerList.length);
       isBannerLoading(false);
     }
   }
