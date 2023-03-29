@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.5
   flutter_snake_navigationbar: ^0.6.1
   badges: ^3.0.3
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:

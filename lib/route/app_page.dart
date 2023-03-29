@@ -1,4 +1,4 @@
-import 'package:flutter_ecommerce/bindings/dashboard_binding.dart';
+import 'package:flutter_ecommerce/bindings/dashboard/dashboard_binding.dart';
 import 'package:flutter_ecommerce/route/app_route.dart';
 import 'package:flutter_ecommerce/view/dashboard/dashboard_screen.dart';
 import 'package:get/get.dart';
