@@ -1,5 +1,5 @@
 import 'package:flutter_ecommerce/model/ad_banner.dart';
-import 'package:flutter_ecommerce/service/remote_service/remote_service_banner.dart';
+import 'package:flutter_ecommerce/service/remote_service/remote_banner_service.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
