@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/model/ad_banner.dart';
 import 'package:flutter_ecommerce/route/app_page.dart';
 import 'package:flutter_ecommerce/route/app_route.dart';
 import 'package:flutter_ecommerce/theme/app_theme.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(AdBannerAdapter());
   runApp(const MyApp());
 }
 

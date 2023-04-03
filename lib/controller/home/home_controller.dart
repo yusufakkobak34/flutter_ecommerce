@@ -1,10 +1,10 @@
 import 'package:flutter_ecommerce/model/ad_banner.dart';
 import 'package:flutter_ecommerce/model/category.dart';
 import 'package:flutter_ecommerce/model/product.dart';
+import 'package:flutter_ecommerce/service/local_remote_service/local_ad_banner_service.dart';
 import 'package:flutter_ecommerce/service/remote_service/remote_banner_service.dart';
 import 'package:flutter_ecommerce/service/remote_service/remote_popular_category_service.dart';
 import 'package:get/get.dart';
-
 import '../../service/remote_service/remote_popular_product_service.dart';
 
 class HomeController extends GetxController {
@@ -16,9 +16,11 @@ class HomeController extends GetxController {
   RxBool isBannerLoading = false.obs;
   RxBool isPopularCategoryLoading = false.obs;
   RxBool isPopularProductLoading = false.obs;
+  final LocalAdBannerService _localAdBannerService = LocalAdBannerService();
 
   @override
-  void onInit() {
+  void onInit() async {
+    await _localAdBannerService.init();
     getAdBanners();
     getPopularCategories();
     getPopularProducts();
@@ -28,9 +30,14 @@ class HomeController extends GetxController {
   void getAdBanners() async {
     try {
       isBannerLoading(true);
+      if (_localAdBannerService.getAdBanners().isNotEmpty) {
+        bannerList.assignAll(_localAdBannerService.getAdBanners());
+      }
       var result = await RemoteBannerService().get();
       if (result != null) {
         bannerList.assignAll(adBannerListFromJson(result.body));
+        _localAdBannerService.assignAllAdBanners(
+            adBanners: adBannerListFromJson(result.body));
       }
     } finally {
       isBannerLoading(false);
