@@ -10,7 +10,7 @@ List<Product> popularProductListFromJson(String val) =>
 
 List<Product> productListFromJson(String val) =>
     List<Product>.from(jsonDecode(val)['data']
-        .map((val) => Product.ProductFromJson(val)));        
+        .map((val) => Product.productFromJson(val)));        
 
 @HiveType(typeId: 3)
 class Product {
@@ -45,7 +45,7 @@ class Product {
           tags: []
           );
 
-    factory Product.ProductFromJson(Map<String, dynamic> data) =>
+    factory Product.productFromJson(Map<String, dynamic> data) =>
       Product(
           id: data['id'],
           name: data['attributes']['name'],

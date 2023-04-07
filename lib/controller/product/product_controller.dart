@@ -22,7 +22,6 @@ class ProductController extends GetxController {
       }
     } finally {
       isProductLoading(false);
-      print(productList.length);
-    }
+     }
   }
 }
