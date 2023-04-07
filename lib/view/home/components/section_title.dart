@@ -13,12 +13,12 @@ class SectionTitle extends StatelessWidget {
         children: [
           Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             color: Colors.black87,
           ),
         ),
-        Text(
+        const Text(
           "Daha Fazlası",
           style: TextStyle(
             color: Colors.grey,

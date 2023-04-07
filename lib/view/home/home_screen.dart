@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           const MainHeader(),
           Expanded(
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Obx(() {
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                       return CarouselSliderView(
                           bannerList: homeController.bannerList);
                     } else {
-                      return CarouselLoading();
+                      return const CarouselLoading();
                     }
                   }),
                   const SectionTitle(title: "Popüler Kategoriler"),
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                         categories: homeController.popularCategoryList,
                       );
                     } else {
-                      return PopularCategoryLoading();
+                      return const PopularCategoryLoading();
                     }
                   }),
                   const SectionTitle(title: "Popüler Ürünler"),
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                       return PopularProduct(
                           popularProducts: homeController.popularProductList);
                     } else {
-                      return PopularProductLoading();
+                      return const PopularProductLoading();
                     }
                   }),
                 ],

@@ -11,7 +11,7 @@ class PopularCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(10, 10, 5, 10),
+      padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
       child: CachedNetworkImage(imageUrl: baseUrl + category.image,
       imageBuilder: (context, imageProvider) => 
       Material(
@@ -30,7 +30,7 @@ class PopularCategoryCard extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Text(
               category.name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,

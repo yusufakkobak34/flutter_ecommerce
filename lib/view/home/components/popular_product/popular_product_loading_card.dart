@@ -16,7 +16,7 @@ class PopularProductLoadingCard extends StatelessWidget {
           highlightColor: Colors.white,
           baseColor: Colors.grey.shade300,
           child: Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             width: 120,
             child: Column(
               children: [

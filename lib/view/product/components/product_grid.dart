@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/model/product.dart';
 import 'package:flutter_ecommerce/view/product/components/product_card.dart';
-import 'package:flutter_ecommerce/view/product/components/product_loading_card.dart';
+
 
 class ProductGrid extends StatelessWidget {
   final List<Product> products;

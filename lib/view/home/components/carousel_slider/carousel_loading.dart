@@ -13,7 +13,7 @@ class CarouselLoading extends StatelessWidget {
         children: [
           Container(
           margin: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.grey,
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),

@@ -31,13 +31,13 @@ class PopularProductCard extends StatelessWidget {
                     baseColor: Colors.grey,
                     child: Container(
                       color: Colors.grey,
-                      padding: EdgeInsets.all(15),
-                      margin: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 25,
                       ),
                     ),
                   ),
-                  errorWidget: (context,url,error) => Center(
+                  errorWidget: (context,url,error) => const Center(
                     child: Icon(
                       Icons.error_outline,
                       color: Colors.grey,
