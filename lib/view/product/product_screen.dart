@@ -21,8 +21,14 @@ class ProductScreen extends StatelessWidget {
               if (productController.productList.isNotEmpty) {
                 return ProductGrid(products: productController.productList);
               } else {
-                return const Center(
-                  child: Text("Ürün bulunamadı"),
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('assets/product_not_found.png'),
+                    const SizedBox(height: 10,),
+                    const Text("Ürün bulunamadı"),
+                  ],
                 );
               }
             }
