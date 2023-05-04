@@ -17,7 +17,7 @@ class CategoryScreen extends StatelessWidget {
               CategoryCard(category: categoryController.categoryList[index]),
         );
       } else {
-        return Container(); // Breakpoint here. 
+        return Container(); 
       }
     });
   }
