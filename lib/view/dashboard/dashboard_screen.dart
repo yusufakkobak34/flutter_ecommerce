@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/controller/dashboard/dashboard_controller.dart';
+import 'package:flutter_ecommerce/view/account/account_screen.dart';
 import 'package:flutter_ecommerce/view/category/category_screen.dart';
 import 'package:flutter_ecommerce/view/home/home_screen.dart';
 import 'package:flutter_ecommerce/view/product/product_screen.dart';
@@ -17,13 +18,11 @@ class DashboardScreen extends StatelessWidget {
         body: SafeArea(
           child: IndexedStack(
             index: controller.tabIndex,
-            children: [
-              const HomeScreen(),
-              const ProductScreen(),
-              const CategoryScreen(),
-              Container(
-                color: Colors.orange,
-              ),
+            children: const [
+              HomeScreen(),
+              ProductScreen(),
+              CategoryScreen(),
+              AccountScreen(),
             ],
           ),
         ),
