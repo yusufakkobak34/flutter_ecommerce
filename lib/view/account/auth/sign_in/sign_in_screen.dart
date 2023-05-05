@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/component/input_outline_button.dart';
 import 'package:flutter_ecommerce/component/input_text_button.dart';
 import 'package:flutter_ecommerce/component/input_text_field.dart';
+import 'package:flutter_ecommerce/view/account/auth/sign_up/sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -36,42 +37,51 @@ class SignInScreen extends StatelessWidget {
               Spacer(flex: 3),
               InputTextField(title: "E-Mail"),
               SizedBox(height: 10),
-              InputTextField(title: "Şifre",obsecureText: true),
+              InputTextField(title: "Şifre", obsecureText: true),
               SizedBox(height: 10),
               Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    "Şifreni mi unuttun ?",
-                    style: TextStyle(fontSize: 12),
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: const Text(
+                      "Şifreni mi unuttun ?",
+                      style: TextStyle(fontSize: 12),
+                    ),
                   ),
-                ),
-              ],
+                ],
               ),
               const Spacer(),
               InputTextButton(title: "Giriş Yap", onClick: () {}),
               const SizedBox(height: 10),
-              InputOutlineButton(title: "Geri Dön", onClick: () {
-                Navigator.of(context).pop();
-              }
-              ),
+              InputOutlineButton(
+                  title: "Geri Dön",
+                  onClick: () {
+                    Navigator.of(context).pop();
+                  }),
               const Spacer(flex: 5),
               Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Ben yeni bir kullanıcıyım",
-                  style: TextStyle(
-                    color: Colors.blue,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpScreen()));
+                    },
+                    child: const Text(
+                      "Ben yeni bir kullanıcıyım",
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-          ],
-         ),
+                ],
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
         ),
       ),
     );
