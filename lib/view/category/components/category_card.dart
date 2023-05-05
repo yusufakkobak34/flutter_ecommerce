@@ -32,7 +32,7 @@ class _CategoryCardState extends State<CategoryCard> {
               shadowColor: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(12),
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 300),
                 width: double.infinity,
                 height: _selected ? 200 : 140,
                 decoration: BoxDecoration(

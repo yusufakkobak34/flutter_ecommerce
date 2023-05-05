@@ -194,9 +194,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
           ),
           onPressed: () {},
-          child: Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: const Text("Sepete Ekle",
+          child: const Padding(
+            padding: EdgeInsets.all(6.0),
+            child:  Text("Sepete Ekle",
             style: TextStyle(
               fontSize: 16,
             ),

@@ -37,7 +37,6 @@ class ProductController extends GetxController {
       }
     } finally {
       isProductLoading(false);
-      print(productList.length);
     }
   }
 
@@ -50,7 +49,6 @@ class ProductController extends GetxController {
       }
     } finally {
       isProductLoading(false);
-      print(productList.length);
     }
   }
 }

@@ -16,8 +16,8 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Spacer(),
-              Text(
+              const Spacer(),
+              const Text(
                 "Hesap Oluştur,",
                 style: TextStyle(
                   color: Colors.black,
@@ -25,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              const Text(
                 "Başlamak için Kaydolun",
                 style: TextStyle(
                   color: Colors.grey,
@@ -34,15 +34,15 @@ class SignUpScreen extends StatelessWidget {
                   letterSpacing: 1.2,
                 ),
               ),
-              Spacer(flex: 3),
-              InputTextField(title: "Tam Adınız"),
-              SizedBox(height: 10),
-              InputTextField(title: "E-Mail"),
-              SizedBox(height: 10),
-              InputTextField(title: "Şifre", obsecureText: true),
-              SizedBox(height: 10),
-              InputTextField(title: "Şifreyi doğrulayın", obsecureText: true),
-              SizedBox(height: 10),
+              const Spacer(flex: 3),
+              const InputTextField(title: "Tam Adınız"),
+              const SizedBox(height: 10),
+              const InputTextField(title: "E-Mail"),
+              const SizedBox(height: 10),
+              const InputTextField(title: "Şifre", obsecureText: true),
+              const SizedBox(height: 10),
+              const InputTextField(title: "Şifreyi doğrulayın", obsecureText: true),
+              const SizedBox(height: 10),
               const Spacer(),
               InputTextButton(title: "Kaydol", onClick: () {}),
               const SizedBox(height: 10),
@@ -55,7 +55,7 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Hesabınız var mı ?",
                     style: TextStyle(
                       color: Colors.black,
@@ -66,11 +66,11 @@ class SignUpScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignInScreen()));
+                              builder: (context) => const SignInScreen()));
                     },
-                    child: Text(
+                    child: const Text(
                       "Giriş Yap",
-                      style: TextStyle(
+                      style:  TextStyle(
                         color: Colors.blue,
                       ),
                     ),

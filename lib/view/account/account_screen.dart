@@ -14,7 +14,7 @@ class AccountScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundColor: Colors.grey,
                 radius: 36,
                 child: CircleAvatar(
@@ -26,7 +26,7 @@ class AccountScreen extends StatelessWidget {
                 width: 10,
               ),
               Column(
-                children: [
+                children: const [
                   Text(
                     "Hesabınıza giriş yapın",
                     style: TextStyle(
@@ -43,7 +43,7 @@ class AccountScreen extends StatelessWidget {
             title: "Profil Bilgisi",
             onClick: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignInScreen()));
+                  MaterialPageRoute(builder: (context) => const SignInScreen()));
             },
           ),
           buildAccountCard(

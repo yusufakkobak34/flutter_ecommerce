@@ -16,8 +16,8 @@ class SignInScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Spacer(),
-              Text(
+              const Spacer(),
+              const Text(
                 "Hoş Geldiniz",
                 style: TextStyle(
                   color: Colors.black,
@@ -25,7 +25,7 @@ class SignInScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              const Text(
                 "Devam etmek için giriş yapın",
                 style: TextStyle(
                   color: Colors.grey,
@@ -34,11 +34,11 @@ class SignInScreen extends StatelessWidget {
                   letterSpacing: 1.2,
                 ),
               ),
-              Spacer(flex: 3),
-              InputTextField(title: "E-Mail"),
-              SizedBox(height: 10),
-              InputTextField(title: "Şifre", obsecureText: true),
-              SizedBox(height: 10),
+              const Spacer(flex: 3),
+              const InputTextField(title: "E-Mail"),
+              const SizedBox(height: 10),
+              const InputTextField(title: "Şifre", obsecureText: true),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -68,7 +68,7 @@ class SignInScreen extends StatelessWidget {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignUpScreen()));
+                              builder: (context) => const SignUpScreen()));
                     },
                     child: const Text(
                       "Ben yeni bir kullanıcıyım",
