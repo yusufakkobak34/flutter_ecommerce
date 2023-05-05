@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/view/account/auth/sign_in_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -40,7 +41,10 @@ class AccountScreen extends StatelessWidget {
           const SizedBox(height: 50),
           buildAccountCard(
             title: "Profil Bilgisi",
-            onClick: () {},
+            onClick: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SignInScreen()));
+            },
           ),
           buildAccountCard(
             title: "Bildirimler",
