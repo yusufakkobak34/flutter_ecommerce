@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/component/input_text_button.dart';
 import 'package:flutter_ecommerce/component/input_text_field.dart';
+import 'package:flutter_ecommerce/view/account/auth/sign_in/sign_in_screen.dart';
 import '../../../../component/input_outline_button.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -34,44 +35,51 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               Spacer(flex: 3),
+              InputTextField(title: "Tam Adınız"),
+              SizedBox(height: 10),
               InputTextField(title: "E-Mail"),
               SizedBox(height: 10),
-              InputTextField(title: "Şifre",obsecureText: true),
+              InputTextField(title: "Şifre", obsecureText: true),
               SizedBox(height: 10),
-              Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    "Şifreni mi unuttun ?",
-                    style: TextStyle(fontSize: 12),
-                  ),
-                ),
-              ],
-              ),
+              InputTextField(title: "Şifreyi doğrulayın", obsecureText: true),
+              SizedBox(height: 10),
               const Spacer(),
-              InputTextButton(title: "Giriş Yap", onClick: () {}),
+              InputTextButton(title: "Kaydol", onClick: () {}),
               const SizedBox(height: 10),
-              InputOutlineButton(title: "Geri Dön", onClick: () {
-                Navigator.of(context).pop();
-              }
-              ),
+              InputOutlineButton(
+                  title: "Geri Dön",
+                  onClick: () {
+                    Navigator.of(context).pop();
+                  }),
               const Spacer(flex: 5),
               Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Ben yeni bir kullanıcıyım",
-                  style: TextStyle(
-                    color: Colors.blue,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Hesabınız var mı ?",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-          ],
-         ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInScreen()));
+                    },
+                    child: Text(
+                      "Giriş Yap",
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
         ),
       ),
     );
