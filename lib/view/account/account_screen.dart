@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/view/account/auth/sign_in_screen.dart';
+import 'package:flutter_ecommerce/view/account/auth/sign_in/sign_in_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
