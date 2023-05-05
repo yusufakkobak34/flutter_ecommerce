@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/component/input_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -11,7 +12,7 @@ class SignInScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Spacer(),
               Text(
                 "Hoş Geldiniz",
@@ -31,6 +32,23 @@ class SignInScreen extends StatelessWidget {
                 ),
               ),
               Spacer(flex: 3),
+              InputTextField(title: "E-Mail"),
+              SizedBox(height: 10),
+              InputTextField(title: "Şifre",obsecureText: true),
+              SizedBox(height: 10),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                InkWell(
+                  onTap: () {},
+                  child: const Text(
+                    "Şifreni mi unuttun ?",
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ),
+              ],
+              ),
+              Spacer(flex: 5),
             ],
           ),
         ),
