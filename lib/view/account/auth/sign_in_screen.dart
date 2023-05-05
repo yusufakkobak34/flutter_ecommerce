@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/component/input_outline_button.dart';
 import 'package:flutter_ecommerce/component/input_text_button.dart';
 import 'package:flutter_ecommerce/component/input_text_field.dart';
 
@@ -49,11 +50,28 @@ class SignInScreen extends StatelessWidget {
                 ),
               ],
               ),
-              const Spacer(flex: 3),
+              const Spacer(),
               InputTextButton(title: "Giriş Yap", onClick: () {}),
+              const SizedBox(height: 10),
+              InputOutlineButton(title: "Geri Dön", onClick: () {
+                Navigator.of(context).pop();
+              }
+              ),
               const Spacer(flex: 5),
-            ],
-          ),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  "Ben yeni bir kullanıcıyım",
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+          ],
+         ),
         ),
       ),
     );
