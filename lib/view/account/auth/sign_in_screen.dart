@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/component/input_text_button.dart';
 import 'package:flutter_ecommerce/component/input_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -48,7 +49,9 @@ class SignInScreen extends StatelessWidget {
                 ),
               ],
               ),
-              Spacer(flex: 5),
+              const Spacer(flex: 3),
+              InputTextButton(title: "Giriş Yap", onClick: () {}),
+              const Spacer(flex: 5),
             ],
           ),
         ),
