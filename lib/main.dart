@@ -3,6 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_ecommerce/model/ad_banner.dart';
 import 'package:flutter_ecommerce/model/category.dart';
 import 'package:flutter_ecommerce/model/product.dart';
+import 'package:flutter_ecommerce/model/user.dart';
 import 'package:flutter_ecommerce/route/app_page.dart';
 import 'package:flutter_ecommerce/route/app_route.dart';
 import 'package:flutter_ecommerce/theme/app_theme.dart';
@@ -15,6 +16,7 @@ void main() async {
   Hive.registerAdapter(AdBannerAdapter());
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(ProductAdapter());
+  Hive.registerAdapter(UserAdapter());
   configLoading();
   runApp(const MyApp());
 }
