@@ -1,3 +1,4 @@
+import 'package:flutter_ecommerce/model/user.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
@@ -7,6 +8,14 @@ class AuthController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+  }
+
+  void signUp({required String fullName,required String email,required String password}) async {
+   try{
+
+   } finally {
+    
+   }
   }
 
 }
