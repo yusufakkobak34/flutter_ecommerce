@@ -33,73 +33,92 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Spacer(),
-              const Text(
-                "Hesap Oluştur,",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Text(
-                "Başlamak için Kaydolun",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 1.2,
-                ),
-              ),
-              const Spacer(flex: 3),
-              const InputTextField(title: "Tam Adınız"),
-              const SizedBox(height: 10),
-              const InputTextField(title: "E-Mail"),
-              const SizedBox(height: 10),
-              const InputTextField(title: "Şifre", obsecureText: true),
-              const SizedBox(height: 10),
-              const InputTextField(
-                  title: "Şifreyi doğrulayın", obsecureText: true),
-              const SizedBox(height: 10),
-              const Spacer(),
-              InputTextButton(title: "Kaydol", onClick: () {}),
-              const SizedBox(height: 10),
-              InputOutlineButton(
-                  title: "Geri Dön",
-                  onClick: () {
-                    Navigator.of(context).pop();
-                  }),
-              const Spacer(flex: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Hesabınız var mı ?",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Spacer(),
+                const Text(
+                  "Hesap Oluştur,",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignInScreen()));
-                    },
-                    child: const Text(
-                      "Giriş Yap",
+                ),
+                const Text(
+                  "Başlamak için Kaydolun",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                const Spacer(flex: 3),
+                InputTextField(
+                    title: "Tam Adınız",
+                    textEditingController: fullNameController,
+                    validation: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Bu alan boş bırakılamaz";
+                      }
+                      return null;
+                    }),
+                const SizedBox(height: 10),
+                InputTextField(
+                    title: "E-Mail",
+                    textEditingController: emailNameController,
+                    validation: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Bu alan boş bırakılamaz";
+                      }
+                      return null;
+                    }),
+                const SizedBox(height: 10),
+                const InputTextField(title: "Şifre", obsecureText: true),
+                const SizedBox(height: 10),
+                const InputTextField(
+                    title: "Şifreyi doğrulayın", obsecureText: true),
+                const SizedBox(height: 10),
+                const Spacer(),
+                InputTextButton(title: "Kaydol", onClick: () {}),
+                const SizedBox(height: 10),
+                InputOutlineButton(
+                    title: "Geri Dön",
+                    onClick: () {
+                      Navigator.of(context).pop();
+                    }),
+                const Spacer(flex: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Hesabınız var mı ?",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.black,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-            ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignInScreen()));
+                      },
+                      child: const Text(
+                        "Giriş Yap",
+                        style: TextStyle(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
         ),
       ),
