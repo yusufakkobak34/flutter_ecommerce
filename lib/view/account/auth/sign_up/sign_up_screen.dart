@@ -4,8 +4,28 @@ import 'package:flutter_ecommerce/component/input_text_field.dart';
 import 'package:flutter_ecommerce/view/account/auth/sign_in/sign_in_screen.dart';
 import '../../../../component/input_outline_button.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController emailNameController = TextEditingController();
+  TextEditingController passwordNameController = TextEditingController();
+  TextEditingController confirmNameController = TextEditingController();
+
+  @override
+  void dispose() {
+    fullNameController.dispose();
+    emailNameController.dispose();
+    passwordNameController.dispose();
+    confirmNameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +61,8 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: 10),
               const InputTextField(title: "Şifre", obsecureText: true),
               const SizedBox(height: 10),
-              const InputTextField(title: "Şifreyi doğrulayın", obsecureText: true),
+              const InputTextField(
+                  title: "Şifreyi doğrulayın", obsecureText: true),
               const SizedBox(height: 10),
               const Spacer(),
               InputTextButton(title: "Kaydol", onClick: () {}),
@@ -70,7 +91,7 @@ class SignUpScreen extends StatelessWidget {
                     },
                     child: const Text(
                       "Giriş Yap",
-                      style:  TextStyle(
+                      style: TextStyle(
                         color: Colors.blue,
                       ),
                     ),
