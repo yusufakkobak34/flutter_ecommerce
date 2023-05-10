@@ -13,6 +13,7 @@ class AuthController extends GetxController {
 
   @override
   void onInit() async {
+    await _localAuthService.init();
     super.onInit();
   }
 
@@ -34,6 +35,8 @@ class AuthController extends GetxController {
         var userResult = await RemoteAuthService()
             .createProfile(fullName: fullName, token: token);
         if (userResult.statusCode == 200) {
+          await _localAuthService.addToken(token: token);
+          await _localAuthService.addUser(user: user.value!);
           EasyLoading.showSuccess("Uygulamaya hoş geldiniz");
           Navigator.of(Get.overlayContext!).pop();
         } else {
