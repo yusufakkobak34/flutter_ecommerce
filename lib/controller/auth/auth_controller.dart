@@ -100,4 +100,6 @@ class AuthController extends GetxController {
       await _localAuthService.clear();
     }
 
+    // project finished tempoarily.
+
 }
