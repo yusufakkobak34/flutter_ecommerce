@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/component/input_text_button.dart';
 import 'package:flutter_ecommerce/component/input_text_field.dart';
+import 'package:flutter_ecommerce/controller/controllers.dart';
+import 'package:flutter_ecommerce/extention/string_extention.dart';
 import 'package:flutter_ecommerce/view/account/auth/sign_in/sign_in_screen.dart';
 import '../../../../component/input_outline_button.dart';
 
@@ -14,22 +16,23 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController fullNameController = TextEditingController();
-  TextEditingController emailNameController = TextEditingController();
-  TextEditingController passwordNameController = TextEditingController();
-  TextEditingController confirmNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmController = TextEditingController();
 
   @override
   void dispose() {
     fullNameController.dispose();
-    emailNameController.dispose();
-    passwordNameController.dispose();
-    confirmNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -69,21 +72,77 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(height: 10),
                 InputTextField(
                     title: "E-Mail",
-                    textEditingController: emailNameController,
+                    textEditingController: emailController,
                     validation: (String? value) {
                       if (value == null || value.isEmpty) {
                         return "Bu alan boş bırakılamaz";
+                      } else if (!value.isValidEmail) {
+                        return "Lütfen geçerli bir e-mail adresi girin";
                       }
                       return null;
                     }),
                 const SizedBox(height: 10),
-                const InputTextField(title: "Şifre", obsecureText: true),
+                InputTextField(
+                    title: "Şifre",
+                    obsecureText: true,
+                    textEditingController: passwordController,
+                    validation: (String? value) {
+                      List<String> _validation = [];
+                      if (value == null || value.isEmpty) {
+                        return "Bu alan boş bırakılamaz";
+                      } else {
+                        if (!value.isValidPasswordHasNumber) {
+                          _validation.add("Şifreniz bir numara içermeli");
+                        }
+                        if (!value.isValidPasswordHasCapitalLetter) {
+                          _validation.add("Şifreniz bir büyük harf içermeli");
+                          if (!value.isValidPasswordHasLowerCaseLetter) {
+                            _validation.add("Şifreniz bir küçük harf içermeli");
+                          }
+                          if (!value.isValidPasswordHasSpecialCharacter) {
+                            _validation.add(
+                                "Şifreniz bir özel karakter içermeli [! @ = \$ %]");
+                          }
+                        }
+                      }
+                      String msg = '';
+                      if (_validation.isNotEmpty) {
+                        for (var i = 0; i < _validation.length; i++) {
+                          msg = (msg + _validation[i]);
+                          if ((1 + 1) != _validation.length) {
+                            msg = msg + "\n";
+                          }
+                        }
+                      }
+                      return msg.isNotEmpty ? msg : null;
+                    }),
                 const SizedBox(height: 10),
-                const InputTextField(
-                    title: "Şifreyi doğrulayın", obsecureText: true),
+                InputTextField(
+                    title: "Şifreyi doğrulayın",
+                    obsecureText: true,
+                    textEditingController: confirmController,
+                    validation: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Bu alan boş bırakılamaz";
+                      } else if (passwordController.text != value) {
+                        return "Şifreler eşleşmiyor";
+                      }
+                      return null;
+                    }),
                 const SizedBox(height: 10),
                 const Spacer(),
-                InputTextButton(title: "Kaydol", onClick: () {}),
+                InputTextButton(
+                  title: "Kaydol",
+                  onClick: () {
+                    if (_formKey.currentState!.validate()) {
+                      authController.signUp(
+                        fullName: fullNameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                    }
+                  },
+                ),
                 const SizedBox(height: 10),
                 InputOutlineButton(
                     title: "Geri Dön",

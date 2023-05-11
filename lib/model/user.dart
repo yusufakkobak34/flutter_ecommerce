@@ -28,7 +28,7 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> data) => User(
-      id: data['id'],
+      id: data['id'].toString(),
       fullName: data['fullName'],
       email: data['email'],
       image: data['image'] == null ? null : data['image']['url'],

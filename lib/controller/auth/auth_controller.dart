@@ -35,6 +35,7 @@ class AuthController extends GetxController {
         var userResult = await RemoteAuthService()
             .createProfile(fullName: fullName, token: token);
         if (userResult.statusCode == 200) {
+          user.value = userFromJson(userResult.body);
           await _localAuthService.addToken(token: token);
           await _localAuthService.addUser(user: user.value!);
           EasyLoading.showSuccess("Uygulamaya hoş geldiniz");
@@ -47,6 +48,9 @@ class AuthController extends GetxController {
         EasyLoading.showError(
             "Yolunda gitmeyen bir şey oldu,lütfen daha sonra tekrar deneyin");
       }
+    } catch (e) {
+      EasyLoading.showError(
+          "Yolunda gitmeyen bir şey oldu,lütfen daha sonra tekrar deneyin");
     } finally {
       EasyLoading.dismiss();
     }
