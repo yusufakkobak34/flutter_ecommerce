@@ -55,4 +55,10 @@ class AuthController extends GetxController {
       EasyLoading.dismiss();
     }
   }
+
+  void signOut() async {
+      user.value = null;
+      await _localAuthService.clear();
+    }
+
 }

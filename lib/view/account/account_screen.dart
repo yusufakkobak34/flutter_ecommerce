@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/controller/controllers.dart';
 import 'package:flutter_ecommerce/view/account/auth/sign_in/sign_in_screen.dart';
+import 'package:get/get.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -12,38 +14,43 @@ class AccountScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         children: [
           const SizedBox(height: 20),
-          Row(
-            children: [
-              const CircleAvatar(
-                backgroundColor: Colors.grey,
-                radius: 36,
-                child: CircleAvatar(
-                  radius: 35,
-                  backgroundImage: AssetImage("assets/user_image.png"),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Column(
-                children: const [
-                  Text(
-                    "Hesabınıza giriş yapın",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
+          Obx(
+            () => Row(
+              children: [
+                const CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  radius: 36,
+                  child: CircleAvatar(
+                    radius: 35,
+                    backgroundImage: AssetImage("assets/user_image.png"),
                   ),
-                ],
-              ),
-            ],
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  children: [
+                    Text(
+                      authController.user.value?.fullName ??
+                          "Hesabınıza giriş yapın",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 50),
           buildAccountCard(
             title: "Profil Bilgisi",
             onClick: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SignInScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignInScreen()));
             },
           ),
           buildAccountCard(
@@ -62,10 +69,19 @@ class AccountScreen extends StatelessWidget {
             title: "Hizmet Koşulları",
             onClick: () {},
           ),
-          buildAccountCard(
-            title: "Giriş Yap",
-            onClick: () {},
-          ),
+          Obx(() => buildAccountCard(
+              title:
+                  authController.user.value == null ? "Giriş Yap" : "Çıkış Yap",
+              onClick: () {
+                if (authController.user.value != null) {
+                  authController.signOut();
+                } else {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignInScreen()));
+                }
+              }))
         ],
       ),
     );
