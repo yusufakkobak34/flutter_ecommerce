@@ -56,6 +56,45 @@ class AuthController extends GetxController {
     }
   }
 
+
+  void signIn({
+      required String email,
+      required String password}) async {
+    try {
+      EasyLoading.show(
+        status: 'Yükleniyor...',
+        dismissOnTap: false,
+      );
+      var result = await RemoteAuthService().signIn(
+        email: email,
+        password: password,
+      );
+      if (result.statusCode == 200) {
+        String token = json.decode(result.body)['jwt'];
+        var userResult = await RemoteAuthService()
+            .getProfile(token: token);
+        if (userResult.statusCode == 200) {
+          user.value = userFromJson(userResult.body);
+          await _localAuthService.addToken(token: token);
+          await _localAuthService.addUser(user: user.value!);
+          EasyLoading.showSuccess("Uygulamaya hoş geldiniz");
+          Navigator.of(Get.overlayContext!).pop();
+        } else {
+          EasyLoading.showError(
+              "Yolunda gitmeyen bir şey oldu,lütfen daha sonra tekrar deneyin");
+        }
+      } else {
+        EasyLoading.showError(
+            "Kullanıcı adı veya şifre yanlış");
+      }
+    } catch (e) {
+      EasyLoading.showError(
+          "Yolunda gitmeyen bir şey oldu,lütfen daha sonra tekrar deneyin");
+    } finally {
+      EasyLoading.dismiss();
+    }
+  }
+
   void signOut() async {
       user.value = null;
       await _localAuthService.clear();
